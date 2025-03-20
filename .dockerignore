@@ -1,0 +1,12 @@
+# Ignore IDE and system files
+.idea/
+.DS_Store
+
+voice-extractor-shared/
+node_modules/
+scripts/
+src/
+bun.lockb
+package.json
+tsconfig.json
+versioning-strategy.md
