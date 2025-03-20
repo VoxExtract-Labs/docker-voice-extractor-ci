@@ -1,0 +1,51 @@
+name: PR Docker Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  docker-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🏗️ Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.1.18
+
+      - name: Install Bun dependencies
+        run: bun install
+
+      - name: Lint project files
+        run: bun run lint
+
+      - name: Fetch Shared Config
+        run: bun src/fetch-shared-files.ts
+
+      - name: Lint Dockerfile
+        run: bun src/lint.ts
+
+      - name: Build Docker Image with Bun Script
+        run: bun src/build.ts
+
+      - name: Scan Docker Image for Vulnerabilities
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image --severity HIGH,CRITICAL --quiet --format json angelxmoreno/vox-ci-image 
+
+      - name: Start container in detached mode
+        run: |
+          docker run -d --name pr_container angelxmoreno/vox-ci-image
+
+      - name: Run check-services inside container
+        run: |
+          # Wait a few seconds to ensure services have started
+          sleep 5
+          docker exec pr_container /usr/local/bin/check-services.sh
+
+      - name: Stop container
+        run: |
+          docker stop pr_container

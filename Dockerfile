@@ -98,4 +98,4 @@ RUN chmod +x /usr/local/bin/check-services.sh
 EXPOSE 3306 6379 1025 8025 9000 9001
 
 # Set entrypoint
-CMD ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
