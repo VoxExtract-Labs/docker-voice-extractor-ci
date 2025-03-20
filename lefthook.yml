@@ -1,1 +1,12 @@
-/Users/amoreno/Projects/VoxExtractLabs/docker-voice-extractor-ci/node_modules/voice-extractor-shared/config/lefthook.yml
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      run: bun biome check
+    format:
+      run: bun biome format
+
+commit-msg:
+  commands:
+    commitlint:
+      run: bunx commitlint --edit $1

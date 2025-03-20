@@ -8,12 +8,11 @@
         "prepare": "bun biome check"
     },
     "devDependencies": {
-        "@types/bun": "latest",
-        "@types/fs-extra": "^11.0.4",
-        "voice-extractor-shared": "github:VoxExtract-Labs/voice-extractor-shared#main",
         "@biomejs/biome": "^1.9.4",
         "@commitlint/cli": "^19.8.0",
         "@commitlint/config-conventional": "^19.8.0",
+        "@types/bun": "latest",
+        "@types/fs-extra": "^11.0.4",
         "lefthook": "^1.11.3"
     },
     "peerDependencies": {
@@ -22,6 +21,7 @@
     "dependencies": {
         "docker-cli-js": "^2.10.0",
         "fs-extra": "^11.3.0",
-        "pretty-bytes": "^6.1.1"
+        "pretty-bytes": "^6.1.1",
+        "voice-extractor-shared": "github:VoxExtract-Labs/voice-extractor-shared#main"
     }
 }

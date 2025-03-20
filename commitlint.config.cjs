@@ -1,1 +1,3 @@
-/Users/amoreno/Projects/VoxExtractLabs/docker-voice-extractor-ci/node_modules/voice-extractor-shared/config/commitlint.config.cjs
+module.exports = {
+    extends: ['@commitlint/config-conventional'],
+};
