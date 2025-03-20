@@ -1,0 +1,27 @@
+{
+    "name": "docker-voice-extractor-ci",
+    "module": "index.ts",
+    "type": "module",
+    "scripts": {
+        "lint": "bun biome check",
+        "lint:fix": "bun biome check --write",
+        "prepare": "bun biome check"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.4",
+        "@commitlint/cli": "^19.8.0",
+        "@commitlint/config-conventional": "^19.8.0",
+        "@types/bun": "latest",
+        "@types/fs-extra": "^11.0.4",
+        "lefthook": "^1.11.3"
+    },
+    "peerDependencies": {
+        "typescript": "^5.8.2"
+    },
+    "dependencies": {
+        "docker-cli-js": "^2.10.0",
+        "fs-extra": "^11.3.0",
+        "pretty-bytes": "^6.1.1",
+        "voice-extractor-shared": "github:VoxExtract-Labs/voice-extractor-shared#main"
+    }
+}
